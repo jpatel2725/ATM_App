@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ATMApplication
@@ -62,7 +62,7 @@ namespace ATMApplication
         {
             for (int i = 0; i < 10; i++)
             {
-                accounts.Add(new Account(100 + i, 100.0f, 3.0f, $"Default User {i + 1}"));
+                accounts.Add(new Account(100 + i, 100.0f, 3.0f, "Default User"));
             }
         }
 

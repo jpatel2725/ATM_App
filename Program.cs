@@ -12,7 +12,7 @@ namespace ATMApplication
         public float Balance { get; private set; }
         private List<string> transactions = new List<string>();
 
-        // This sets up a new account with the given details
+        // create new account with the given details
         public Account(int accountNumber, float initialBalance, float annualInterestRate, string accountHolderName)
         {
             AccountNumber = accountNumber;
@@ -22,14 +22,14 @@ namespace ATMApplication
             transactions.Add($"Account created with initial balance: {initialBalance:C}");
         }
 
-        // This method adds money to the account
+        // deposit money to the account
         public void Deposit(float amount)
         {
             Balance += amount;
             transactions.Add($"Deposited: {amount:C}");
         }
 
-        // This method takes money out of the account
+        // Withdraw money out of the account
         public void Withdraw(float amount)
         {
             if (amount > Balance)
@@ -41,7 +41,7 @@ namespace ATMApplication
             transactions.Add($"Withdrew: {amount:C}");
         }
 
-        // This method shows all the transactions for the account
+        // display all the transactions for the account
         public void DisplayTransactions()
         {
             Console.WriteLine("Transaction History:");
@@ -75,18 +75,21 @@ namespace ATMApplication
         // This method creates a new account with the given details
         public void OpenAccount(string clientName, int accountNumber, float initialBalance, float annualInterestRate)
         {
+            //Account number should be more than 100, less than 1000
             if (accountNumber < 100 || accountNumber > 1000)
             {
                 Console.WriteLine("Account number must be between 100 and 1000.");
                 return;
             }
 
+            //Interest rate should be less than 3%
             if (annualInterestRate > 3.0f)
             {
                 Console.WriteLine("Interest rate must be less than or equal to 3%.");
                 return;
             }
 
+            //validates if account number already exists
             if (accounts.Exists(account => account.AccountNumber == accountNumber))
             {
                 Console.WriteLine("Account number already exists.");
